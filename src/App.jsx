@@ -1,13 +1,28 @@
+import React from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
+import HomePage from './pages/HomePage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import PageNotFound from './pages/404'
+import Appbar from './components/appbar/AppBar'
 function App() {
+
  
+  
+
   return (
-   <div>
-     <header>
-       <h1>Learning React</h1>
-     </header>
-   </div>
+    <Router>
+      <Appbar/>
+      <Switch>
+        <Route exact path="/"><HomePage/></Route>
+        <Route  path="/login"><LoginPage/></Route>
+        <Route  path="/register"><RegisterPage/></Route>
+        <Route  path="*"><PageNotFound/></Route>
+      </Switch>
+    </Router>
+        
   );
 }
 
-export default App;
+export default App;    

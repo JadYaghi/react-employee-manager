@@ -1,70 +1,214 @@
-# Getting Started with Create React App
+# React Firebase Starter Kit
+Starter kit is just an extension of the create react app project [Create React App](https://github.com/facebook/create-react-app).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##  Includes The Following Modules
+styled-components
+svgo
+@svgr/cli
+node-sass
+firebase
+react-router-dom
 
-## Available Scripts
 
-In the project directory, you can run:
+##  Available Scripts
 
-### `npm start`
+In the project directory, you can run: `npm start` to test project in dev environment.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To create a production bundle of your app run: `npm run build`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ 
 
-### `npm test`
+ 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Pre flight checklist.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Check You Have Firebase Toos Installed Globaly  
+To check to see if the firebase-tools package is installed run  ```npm list -g```. If you do not see firebase-tool in the list the you will need to install them before proceding. Install the firebase-tools using ```npm install -g firebase-tools```  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Make Sure Your Logged Into Firebase  
+This is an easy step to skip but check your logged into the firebase console. To check that your logged in run ```firebase login```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Make Sure to add the jsconfig.json file and the .gitignore files from the start project folder. 
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Initalize React to use a Firebase Project 
+To setup your project folder to use Firebase run```firebase init```. You will be asked serveral questions during the init process. Depending on the serives that you want to use the init command will take you through setting up the config files required for each service. The questions will pertain to:
+- What Services Will Your Project Use?
+- What Firebase Project Should Your App Use To Access Services?
+- Service Setup (depends on the services you setup firestore, hosting and storage)
+- Firestore config options
+- Hosting config options
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Select Project Firebase Features   
+Use the ```up``` and ```down``` arrows to move between the options and press the ```Space Bar``` to select features, then Enter to confirm your choices.  
 
-### Code Splitting
+    ❯ ◯ Database: Configure Firebase Realtime Database and deploy rules  
+      ◯ Firestore: Deploy rules and create indexes for Firestore  
+      ◯ Functions: Configure and deploy Cloud Functions  
+      ◯ Hosting: Configure and deploy Firebase Hosting sites  
+      ◯ Storage: Deploy Cloud Storage security rules  
+      ◯ Emulators: Set up local emulators for Firebase features  
+      ◯ Remote Config: Get, deploy, and rollback configurations for Remote Config  
+ 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+#### Project Setup
+You need to associate your react project with a Firebase project. You will be presented with the following options. Select use an existing project and select the project you created from the list. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+        ? Please select an option: (Use arrow keys)  
+        ❯ Use an existing project (select your project from the list)
+      
 
-### Making a Progressive Web App
+#### Firestore Setup
+Next you will be asked to setup the ```Firestore Security Rules``` allow you to define how and when to allow
+requests. You can keep these rules in your project directory and publish them with firebase deploy. For now except the default by pressing return  
+  
+#### Firestore Rules 
+Firestore indexes allow you to perform complex queries while maintaining performance that scales with the size of the result set. You can keep index definitions in your project directory and publish them with firebase deploy. Except the default file ```firestore.indexes.json``` by hitting enter.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    ? What file should be used for Firestore indexes? firestore.indexes.json 
 
-### Advanced Configuration
+#### Hosting Setup
+Your public directory is the folder that contains the app you wish to deploy to firebase. This folder will be uploaded when you use the ```firebase deploy``` command. Since we are using CRA (create react app) you will  use the build folder. Make sure to enter build after the word (public)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ? What do you want to use as your public directory? build
+    ? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+    ? Set up automatic builds and deploys with GitHub? No
+    ✔  Wrote build/index.html
 
-### Deployment
+#### Storage Setup
+The last config file is your ```Firebase Storage Security Rules```. This file allows you to define how and when users can upload  and download files. You can keep these rules in your project directory and publish them with ```firebase deploy```. Accept the default by pressing the Return key.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+? What file should be used for Storage Rules? storage.rules
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+## Create an instance of Firebase for your project.
+
+#### Create a firebase folder.
+In the src directory create a firebase folder. Your folder structure should be similar to:
+```
+src
+├── App.jsx
+├── assets
+├── components
+├── css
+├── firebase
+└── index.js
+```  
+  
+#### Copy your firebaseConfig settings 
+1. Get your project config settings from the Firebase Console.
+1. Config snippet is located in your project overview.
+1. In the firebase console click on the gear icon in the upper left hand side of the dashboard.
+1. Select the ```Project settings``` option.
+1. Now scroll down in the console panel till you see the ```Your apps``` panel.
+1. Locate the firebase app you are going to use
+1. Find the ```Firebase SDK snippets``` options.
+1. Select the radio button called Config  
+1. Copy the firebaseConfig settings
+  
+#### Create a firebaseConfig.js file
+Inside your firebase folder create a file and name it firebaseConfig.js. This file is used to create a firebase instance and connect to the firebase app where you have all of the services your react app will use.
+```
+src
+├── App.jsx
+├── assets
+├── components
+├── css
+├── firebase
+├      └── firebaseConfig.js
+└── index.js
+```
+  
+Inside the firebaseConfig.js copy and paste the following code. You will have to replace firebaseConfig object with the one you copyed from the console. 
+```js
+import firebase from 'firebase' 
+
+// firebase dashboard project settings for the app....
+const firebaseConfig = {
+      const firebaseConfig = {
+                apiKey: "YOUR KEY",
+                authDomain: "YOUR DOMAIN",
+                projectId: "YOUR PROJECT ID",
+                storageBucket: "YOUR STORAGE BUCKET",
+                messagingSenderId: "YOUR MESSAGIN ID",
+                appId: "Your App Id",
+                measurementId: "Your Measurement Id"
+            };
+  };
+
+  const firebaseApp = firebase.initializeApp(firebaseConfig)
+
+
+  export default firebaseApp
+
+```
+
+## Testing Firebase Connection
+Open the file called App.jsx and copy and paste the following component code. Here you import the firebase instance that you created. 
+```js
+  import firebaseApp from './firebase/firebaseConfig'
+
+
+function App() {
+
+   console.log(firebaseApp)
+
+  return (
+    <>
+     <header>
+       <h1>React Firebase Starter Kit</h1>
+       <p>now deployed on firebase</p>
+     </header>
+    </>
+  );
+}
+
+export default App;
+
+```  
+Now run your app in dev mode ```npm start``` go to the developer console and check to see if you have an instance of firebase logged out to the console.  
+
+```
+FirebaseAppImpl {firebase_: {…}, isDeleted_: false, name_: "[DEFAULT]", automaticDataCollectionEnabled_: false, options_: {…}, …}
+```  
+
+ You should see an object in the console called FirebaseAppImpl and if you do your ready to start using firebase services with react.
+
+
+## Deploying Your App
+The next step requires you to build your app and deploy it to firebase hosting. First build a production bundle of your app. With CRA run ```npm run build``` to create an optimized bundle.  
+Once the build process is completed you can now deploy your app to firebase hosting. To do this you run the command ```firebase deploy``` this will upload your ```build``` folder and deploy at the end of the build process firebase will provide a URL to your project click the link and make sure your app is deployed.
+
+
+## Setting Up Absolute Paths With Create React App
+To use absolute paths create a jsconfig.json file. If you get tierd of writting relative paths you can instruct CRA to use absolute paths for your imports. In the jsconfig.json file copy and paste the following code. If your Dev Server is running after you create and save the file restart the dev server to make the changes take effect.
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src"]
+}
+```
+
+ 
+
+
+
+
+ 
+
+
+
