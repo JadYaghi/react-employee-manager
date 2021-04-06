@@ -1,3 +1,4 @@
+import firebaseApp from './firebase/firebaseConfig'
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
@@ -8,7 +9,7 @@ import PageNotFound from './pages/404'
 import Appbar from './components/appbar/AppBar'
 function App() {
 
- 
+  console.log(firebaseApp)
   
 
   return (
