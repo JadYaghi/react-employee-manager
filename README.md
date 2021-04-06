@@ -1,6 +1,7 @@
 This Copy is my main copy and what I want to work on
 
 
+
 # React Firebase Starter Kit
 Starter kit is just an extension of the create react app project [Create React App](https://github.com/facebook/create-react-app).
 
