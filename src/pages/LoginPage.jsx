@@ -26,7 +26,7 @@ header{
 `
 const LoginPage = (props) => {
     //component logic
-    const handleLogin = (e) =>{
+    const handleClick = (e) =>{
         // NO CONCEPT OF THE KEYWORD .THIS
         fireBaseApp.auth().signInWithEmailAndPassword('jad@home.com', '123456')
         .then(userCred=>{
@@ -47,7 +47,7 @@ const LoginPage = (props) => {
   
           <FormInput   inputType="email" label="valid email address"/>
           <FormInput   inputType="password" label="password (8 charachters)"/>
-          <Button onClick={handleLogin}  label="login to your account" uiStyle="signup"/>
+          <Button onClick={handleClick}  label="login to your account" uiStyle="signup"/>
 
             </LoginPageStyles>
 
